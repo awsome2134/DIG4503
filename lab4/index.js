@@ -5,22 +5,37 @@ const Pokemon=require("json-pokemon");
 const port=80;
 
 App.get("/id/:id/", (req, res)=>{
-    console.log(Pokemon.getPokemonById(1));
-    if(Pokemon.getPokemonById(req.params.id) == null){
-        res.send(chalk.red("this Id is not valid"));
-    }else{
-        res.send(chalk.green(req.params));
-    }
+
+    let result="This Id is invalid"; 
+
+    Pokemon.forEach((value)=>{
+        if(value.id == req.params.id){
+            result=value;
+            console.log(chalk.green(req.path));
+        }
+    });
+        
+        if(result=="This Id is invalid"){
+            console.log(chalk.red(req.path));
+        }
+        res.send(result);
 });
 
 App.get("/name/:name", (req, res) =>{
-    if(Pokemon.getPokemonByName(req.params.name) == null){
-        res.send(chalk.red("this Id is not valid"));
-    }else{
-        res.send(chalk.green(req.params));
+
+let result="this name is not valid";
+
+    Pokemon.forEach((value)=>{
+        if(value.name == req.params.name){
+            result=value;
+            console.log(chalk.green(req.path));
+        }
+    });
+    if(result=="this name is not valid"){
+        console.log(chalk.red(req.path));
     }
-    
-})
+    res.send(result);
+});
 
 
 App.listen(port, ()=>{
