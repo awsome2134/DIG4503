@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function clicker(event){
+                event.preventDefault();
+                let input=document.querySelector("input");
+
+                fetch("/api/"+input.value).then((res)=>{
+                    return res.json();
+                }).then((ProcessedResponse)=>{
+                    console.log(ProcessedResponse);
+                });
+            }
+        </script>
+        <form  onsubmit="clicker(event)">
+            <input type="text">
+            <button>Click ME</button>
+        </form>
+    </body>
+</html>
