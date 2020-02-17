@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function readName(event){
+                event.preventDefault();
+                let input= document.querySelector("#text");
+
+                fetch("/api/movies/name/"+input.value)
+                .then((res)=>{
+                    return res.json();
+                }).then((processed)=>{
+                    let reporting =document.querySelector("#reportingArea");
+
+                    if(processed.error){
+                        reporting.innerHTML=processed.error;
+                    }else{
+                        reporting.innerHTML=processed.name;
+                    }
+                });
+            }
+
+            function readScore(event){
+                event.preventDefault();
+                let input= document.querySelector("#num");
+
+                fetch("/api/movies/score/"+input.value)
+                .then((res)=>{
+                    return res.json();
+                }).then((processed)=>{
+                    let reporting =document.querySelector("#reportingArea");
+
+                    if(processed.error){
+                        reporting.innerHTML= processed.error;
+                    }else{
+                       reporting.innerHTML=processed.name; 
+                    }
+                });
+            }
+
+            function createMovie(event){
+                event.preventDefault();
+                let name= document.querySelector("#movieName");
+                let score= document.querySelector("#movieScore");
+
+                fetch("/api/movies/"+name.value+"/"+score.value, {
+                    "method": "post"
+                }).then((res)=>{
+                    return res.json();
+                }).then((processed)=>{
+                    let reporting =document.querySelector("#reportingArea");
+
+                    if(processed.error){
+                        reporting.innerHTML= processed.error;
+                    }else{
+                       reporting.innerHTML=processed.name; 
+                    }
+                });
+            }
+        </script>
+        <h2>Score</h2>
+        <form onSubmit="readScore(event)">
+            <input type="text" id="num">
+            <button>Score</button>
+        </form>
+        
+        <h2>Name</h2>
+        <form onSubmit="readName(event)">
+            <input type="text" id="text">
+            <button>Name</button>
+        </form>
+        
+        <h2>Create Movie</h2>
+        <form onsubmit="createMovie(event)">
+            <input type="text" id="movieName">
+            <input type="text" id="movieScore">
+            <button>Submit</button>
+        </form>
+        <h2>Reporting</h2>
+        <div id="reportingArea"></div>
+    </body>
+</html>
