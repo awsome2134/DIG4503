@@ -17,6 +17,24 @@ const Database = require("./Database.js");
 let database = new Database();
 
 // Create a route
+/* App.get("/movies/title/:title", (req, res) => {
+    let result= {"error": "cannot find title"};
+
+    if(collection != null){
+        collection.find({"title": new RegExp(req.params.title)})
+        .limit(6)
+        .toArray()
+        .then((cursorArray) => {
+            if(cursorArray.length != 0){
+                result= cursorArray;
+            }
+ 
+            res.json(result);
+        });
+    }else{
+        res.json(result);
+    }
+}) */
 // A route is a combination of method, path, and response
 // Method: GET
 // Path: /movies/title/:title
@@ -46,6 +64,16 @@ App.get("/movies/title/:title", (req, res) => {
 });
 
 // TODO: Add a route /movies/year/:year
+App.get("/movies/year/:year", (req, res) => {
+    let result= {"error": "Cound not find movie with that release Year!"};
+
+    database.findYear(req.params.year).then((movie) =>{
+        if(movie != null){
+            result=movie;
+        }
+        res.json(result);
+    });
+});
 
 // Listen on 'port'
 App.listen(port, () => {
