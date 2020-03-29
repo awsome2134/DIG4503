@@ -1,3 +1,5 @@
+import Type from "./type.module.css";
+
 class TypeSearch extends React.Component{
     readType(event){
         event.preventDefault();
@@ -8,6 +10,7 @@ class TypeSearch extends React.Component{
             return res.json();
         }).then((processed)=>{
             let reporting =document.querySelector("#reportingArea");
+            reporting.innerHTML="";
 
             if(processed.error){
                 reporting.innerHTML=processed.error;
@@ -25,7 +28,7 @@ class TypeSearch extends React.Component{
             <div>
                 <form onSubmit={this.readType}>
                     <input id= "type" type="text" placeholder="Pokemon type"/>
-                    <button>Submit</button>
+                    <button className={Type.button}>Submit</button>
                 </form>
             </div>
         );

@@ -1,3 +1,5 @@
+import ID from "./id.module.css";
+
 class IdSearch extends React.Component{
     readID(event){
         event.preventDefault();
@@ -22,7 +24,7 @@ class IdSearch extends React.Component{
             <div>
                 <form onSubmit={this.readID}>
                     <input id= "ID" type="text" placeholder="Pokemon ID"/>
-                    <button>Submit</button>
+                    <button className={ID.button}>Submit</button>
                 </form>
             </div>
         );

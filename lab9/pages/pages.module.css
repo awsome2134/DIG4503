@@ -1,0 +1,27 @@
+.links{
+    text-decoration: none;
+}
+
+.IdContainer{
+    background-color: #1C6A9D;
+}
+
+.NameContainer{
+    background-color:#977917;
+}
+
+.IdTxt{
+    color: #59F4FD;
+}
+
+.NameTxt{
+    color: #FFF143;
+}
+
+.TypeContainer{
+    background-image: linear-gradient(to right, blue, red, green);
+}
+
+.TypeTxt{
+    color: #C0C0C0;
+}

@@ -1,3 +1,5 @@
+import Name from "./name.module.css";
+
 class NameSearch extends React.Component{
     readName(event){
         event.preventDefault();
@@ -23,7 +25,7 @@ class NameSearch extends React.Component{
             <div>
                 <form onSubmit={this.readName}>
                     <input id= "name" type="text" placeholder="Pokemon name"/>
-                    <button>Submit</button>
+                    <button className={Name.button}>Submit</button>
                 </form>
             </div>
         );
