@@ -39,7 +39,6 @@ App.get("/api/name/:name", (req, res)=>{
     }else{
         console.log(chalk.green(req.path));
     }
-
     res.json(result);
 });
 

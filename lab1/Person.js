@@ -3,7 +3,7 @@ class Person {
     
     constructor(name, color){
         this.name=name;
-        this.favoriteColor=color;
+        this.favoriteColor=color.toLowerCase();
     }
 
     

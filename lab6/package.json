@@ -8,6 +8,8 @@
     "server": "nodemon index.js",
     "start": "concurrently 'npm:build' 'npm:server'"
   },
+  "homepage": "php-prof.tech/API/index.js",
+
   "keywords": [],
   "author": "",
   "license": "ISC",

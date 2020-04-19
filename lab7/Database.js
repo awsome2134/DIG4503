@@ -60,7 +60,7 @@ class Database {
             // -- (Optional) A callback function
             //
             // By default, it returns a Promise
-            return this.collection.findOne({"title": title});
+            return this.collection.find({"title": title}).limit(6).toArray();
             
         } 
         

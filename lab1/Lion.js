@@ -1,4 +1,5 @@
 const Cat =require("./Cat.js");
+const chalk= require("chalk");
 
 class Lion extends Cat{
     constructor(color, age, weight){

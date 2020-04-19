@@ -10,7 +10,7 @@ App.get("/api/:value", (req, res)=>{
         result={"secret": "you knew the secret"};
     }
     res.json(result);
-})
+});
 
 App.listen(port, ()=>{
     console.log("Server is running");
