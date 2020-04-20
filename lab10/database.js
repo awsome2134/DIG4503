@@ -30,10 +30,10 @@ class Database{
     }
 
     add(pokemon){
-        console.log("entered databse");
         let myOBJ={"name": pokemon};
         if(this.collection != null){
             this.collection.insertOne(myOBJ);
+            return myOBJ;
         }
     }
 }

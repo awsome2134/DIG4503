@@ -6,7 +6,7 @@ class TypeSearch extends React.Component{
         let select2=document.querySelector("#type2");
 
         if(select2.value === ""){
-            fetch("http://localhost:80/api/type/"+select.value)
+            fetch("http://localhost:5000/api/type/"+select.value)
             .then((res)=>{
                 return res.json();
             }).then((processed)=>{
@@ -34,7 +34,7 @@ class TypeSearch extends React.Component{
                 }
             });
         }else{
-            fetch("http://localhost:80/api/type/"+select.value+"/type2/"+select2.value)
+            fetch("http://localhost:3000/api/type/"+select.value+"/type2/"+select2.value)
             .then((res)=>{
                 return res.json();
             }).then((processed)=>{

@@ -4,7 +4,7 @@ class EggSearch extends React.Component{
     eggSearch(){
         let select=document.querySelector("#egg");
 
-        fetch("http://localhost:80/api/egg/"+select.value)
+        fetch("http://localhost:5000/api/egg/"+select.value)
         .then((res)=>{
             return res.json();
         }).then((processed)=>{

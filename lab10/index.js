@@ -1,6 +1,6 @@
 const Express= require("express");
 const App= Express();
-const port= 80;
+const port= 5000;
 
 const cors=require("cors");
 App.use(cors());
@@ -121,7 +121,6 @@ App.get("/api/pokedex/caught", (req, res)=>{
 
 App.get("/api/pokedex/notCaught", (req, res)=>{
     let result={"error": "Could not connect"};
-    let temp=[];
 
     let all=pokedex.get();
     if(all != null && all != "undefined" && all != "[]"){
@@ -130,30 +129,24 @@ App.get("/api/pokedex/notCaught", (req, res)=>{
     
     database.printList()
     .then((pokemon)=>{
-        if(pokemon != null){
-          pokemon.map((v)=>{
-            all.forEach(element => {
-                if(element.name === v.name){
-                    temp.push(element);
-                    console.log(element);
+        all.map((v, index)=>{
+            pokemon.forEach((element) => {
+                if(v.name.toLowerCase() === element.name.toLowerCase()){
+                    v.splice(index, 1);
                 }
             });
-          });  
-
-          result=temp;
-        }
+        });
+        result=all;
 
         res.json(result);
     });
 });
 
-App.get("/api/pokedex/add/:add", (req, res)=>{
+App.post("/api/pokedex/add/:add", (req, res)=>{
     console.log("entered server");
     let result={"error": "Could not be added"};
 
-    database.add(req.params.add);
-    result={"Added": req.params.add};
-    
+    result= database.add(req.params.add);
     res.json(result);
 });
 

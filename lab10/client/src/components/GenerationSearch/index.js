@@ -5,7 +5,7 @@ class GenerationSearch extends React.Component{
     search(){
         let select=document.querySelector("#select");
 
-        fetch("http://localhost:80/api/generation/"+select.value)
+        fetch("http://localhost:5000/api/generation/"+select.value)
         .then((res)=>{
             return res.json();
         }).then((processed)=>{

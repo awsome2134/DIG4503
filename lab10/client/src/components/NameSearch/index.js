@@ -8,7 +8,7 @@ class NameSearch extends React.Component{
         let temp= input.slice(1);
         input=input[0].toUpperCase() + temp;
 
-        fetch("http://localhost:80/api/name/"+input)
+        fetch("http://localhost:5000/api/name/"+input)
         .then((res)=>{
             return res.json();
         }).then((processed)=>{

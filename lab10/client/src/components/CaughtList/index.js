@@ -10,10 +10,15 @@ class CaughtList extends React.Component{
 
     search(){
         let input=document.querySelector("#input");
-        input.removeAttribute("disabled");
+        let input2=document.querySelector("#add");
+        let button=document.querySelector("#insert");
 
-        if(input.value != "" && input.value != null && input.value != "undefined" && input.value != " "){
-            fetch("http://localhost:80/api/pokedex/find/" + input.value)
+        input.removeAttribute("disabled");
+        input2.style.display= "none";
+        button.style.display= "none";
+
+        if(input.value !== "" && input.value !== null && input.value !== "undefined" && input.value !== " "){
+            fetch("http://localhost:5000/api/pokedex/find/" + input.value)
             .then((res)=>{
                 return res.json();
             }).then((processed)=>{
@@ -31,9 +36,14 @@ class CaughtList extends React.Component{
 
     show(){
         let input=document.querySelector("#input");
-        input.setAttribute("disabled", "true");
+        let input2=document.querySelector("#add");
+        let button=document.querySelector("#insert");
 
-        fetch("http://localhost:80/api/pokedex/all")
+        input.setAttribute("disabled", "true");
+        input2.style.display= "none";
+        button.style.display= "none";
+
+        fetch("http://localhost:5000/api/pokedex/all")
         .then((res)=>{
             return res.json();
         }).then((processed)=>{
@@ -59,10 +69,12 @@ class CaughtList extends React.Component{
         let input=document.querySelector("#add");
 
         console.log(input.value);
-        fetch("http//localhost:80/api/pokedex/add/" + input.value)
+        fetch("http://localhost:5000/api/pokedex/add/" + input.value, {"method": "POST"})
         .then((res)=>{
             return res.json();
-        }).then((processed)=>{
+        })
+        .then((processed)=>{
+            console.log(processed);
             let reporting=document.querySelector("#reportingArea");
             reporting.innerHTML= processed;
         });
@@ -70,9 +82,14 @@ class CaughtList extends React.Component{
 
     caught(){
         let input=document.querySelector("#input");
-        input.setAttribute("disabled", "true");
+        let input2=document.querySelector("#add");
+        let button=document.querySelector("#insert");
 
-        fetch("http://localhost:80/api/pokedex/caught")
+        input.setAttribute("disabled", "true");
+        input2.style.display= "none";
+        button.style.display= "none";
+
+        fetch("http://localhost:5000/api/pokedex/caught")
         .then((res)=>{
             return res.json();
         }).then((processed)=>{
@@ -89,9 +106,14 @@ class CaughtList extends React.Component{
 
     notCaught(){
         let input=document.querySelector("#input");
-        input.setAttribute("disabled", "true");
+        let input2=document.querySelector("#add");
+        let button=document.querySelector("#insert");
 
-        fetch("http://localhost:80/api/pokedex/notCaught")
+        input.setAttribute("disabled", "true");
+        input2.style.display= "none";
+        button.style.display= "none";
+
+        fetch("http://localhost:5000/api/pokedex/notCaught")
         .then((res)=>{
             return res.json();
         }).then((processed)=>{
